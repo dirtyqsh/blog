@@ -1,5 +1,6 @@
 package com.dirtyqsh.blog.controllers;
 
+import com.dirtyqsh.blog.DTO.ArticleDTO;
 import com.dirtyqsh.blog.entities.Article;
 import com.dirtyqsh.blog.repositories.ArticleRepo;
 import lombok.extern.slf4j.Slf4j;
@@ -16,8 +17,14 @@ public class MainController {
     private ArticleRepo articleRepo;
 
     @PostMapping("/api/article")
-    public void addArticle(@RequestBody Article article) {
-        log.info("New row: {}", articleRepo.save(article));
+    public void addArticle(@RequestBody ArticleDTO articleDTO) {
+        log.info("New row: {}", articleRepo.save(
+                Article.builder()
+                        .title(articleDTO.getTitle())
+                        .author(articleDTO.getAuthor())
+                        .content(articleDTO.getContent())
+                        .date(articleDTO.getDate())
+                        .build()));
     }
 
     @GetMapping("/api/articles")
@@ -25,7 +32,7 @@ public class MainController {
         return articleRepo.findAll();
     }
 
-    @GetMapping("/api/{id}")
+    @GetMapping("/api/article/{id}")
     public Article getArticle(@PathVariable("id") int id) {
         return articleRepo.findById(id).orElseThrow();
     }
