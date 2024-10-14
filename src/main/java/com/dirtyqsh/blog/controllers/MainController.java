@@ -1,7 +1,7 @@
 package com.dirtyqsh.blog.controllers;
 
 import com.dirtyqsh.blog.DTO.ArticleDTO;
-import com.dirtyqsh.blog.entities.Article;
+import com.dirtyqsh.blog.model.Article;
 import com.dirtyqsh.blog.repositories.ArticleRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +36,11 @@ public class MainController {
     public Article getArticle(@PathVariable("id") int id) {
         return articleRepo.findById(id).orElseThrow();
     }
+
+//    @GetMapping("/api/articles")
+//    public List<Article> getArticles(@RequestParam(value = "sort", defaultValue = "author")) {
+//        return articleRepo.findAll(Pegeable.of);
+//    }
 
     @DeleteMapping("/api/article/{id}")
     public void deleteArticle(@PathVariable("id") int id) {

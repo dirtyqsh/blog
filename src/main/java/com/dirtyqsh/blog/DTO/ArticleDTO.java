@@ -4,6 +4,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -12,5 +13,5 @@ public class ArticleDTO {
     String title;
     String author;
     String content;
-    Date date;
+    LocalDate date;
 }

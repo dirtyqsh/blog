@@ -1,9 +1,9 @@
-package com.dirtyqsh.blog.entities;
+package com.dirtyqsh.blog.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Getter
@@ -19,9 +19,9 @@ public class Article {
     private String title;
     private String author;
     private String content;
-    private Date date;
+    private LocalDate date;
 
-    public Article(String title, String author, String content, Date date) {
+    public Article(String title, String author, String content, LocalDate date) {
         this.title = title;
         this.author = author;
         this.content = content;
